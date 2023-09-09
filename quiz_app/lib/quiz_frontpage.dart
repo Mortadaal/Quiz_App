@@ -8,8 +8,9 @@ var space = const SizedBox(
 );
 
 class QuizFrontPage extends StatelessWidget {
-  const QuizFrontPage({super.key});
+  const QuizFrontPage(this.startQuiz,{super.key});
 
+  final void Function() startQuiz;
   @override
   Widget build(context) {
     return Column(
@@ -18,11 +19,27 @@ class QuizFrontPage extends StatelessWidget {
         Image.asset(
           'assets/images/quiz-logo.png',
           width: 200,
+          color: Color.fromARGB(155, 255, 255, 255),
+         
         ),
+        //   Opacity(
+        //   opacity: 0.5,
+        //   child: Image.asset(
+        //     'assets/images/quiz-logo.png',
+        //     width: 200,
+        //   ),
+        // ),
         space,
         const StayledText('Learn Flutter The Fun Way'),
         space,
-        const OutlinedButton(onPressed: null, child: Text('Start Quiz')),
+         OutlinedButton.icon(
+          onPressed: (){startQuiz();},
+          style: OutlinedButton.styleFrom(
+            foregroundColor: Colors.white,
+          ),
+          icon: const Icon(Icons.arrow_right_alt) ,
+          label: const Text('Start Quiz'),
+        ),
       ],
     );
   }
