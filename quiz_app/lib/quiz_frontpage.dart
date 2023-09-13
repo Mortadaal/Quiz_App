@@ -30,7 +30,7 @@ class QuizFrontPage extends StatelessWidget {
         //   ),
         // ),
         space,
-        const StayledText('Learn Flutter The Fun Way'),
+        const StayledText('Learn Flutter The Fun Way!'),
         space,
          OutlinedButton.icon(
           onPressed: (){startQuiz();},
