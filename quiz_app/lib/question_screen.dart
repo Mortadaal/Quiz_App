@@ -4,7 +4,9 @@ import 'package:quiz_app/data/questions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key});
+  const QuestionScreen({super.key, required this.onSlectAnser});
+final void Function(String answer) onSlectAnser;
+
   @override
   State<QuestionScreen> createState() {
     return _QuestionScreenState();
@@ -13,7 +15,8 @@ class QuestionScreen extends StatefulWidget {
 
 class _QuestionScreenState extends State<QuestionScreen> {
   var currentQuestionIndex = 0;
-  void answerQuestion() {
+  void answerQuestion(String selectedAnswers) {
+    widget.onSlectAnser(selectedAnswers);
     setState(() {
       currentQuestionIndex++;
     });
@@ -44,7 +47,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
               //Dynamisk genereret knapper --> istedet for at harcode dem.
               return AnswerButton(
                 answerText: item,
-                onTap: answerQuestion,
+                onTap: (){
+                  answerQuestion(item);
+                },
               );
             })
           ],
